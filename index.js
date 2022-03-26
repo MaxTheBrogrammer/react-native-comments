@@ -410,10 +410,10 @@ export default class Comments extends PureComponent {
                 }}
               >
                 {this.renderIcon({
-                  style: styles.submit,
+                  style: [styles.submit, this.getStyle('submit')],
                   name: "caret-right",
                   size: 40,
-                  color: "gray"
+                  color: this.props.submitButtonColor || "gray"
                 })}
               </TouchableHighlight>
             </View>
@@ -444,10 +444,10 @@ export default class Comments extends PureComponent {
             }}
           >
             {this.renderIcon({
-              style: styles.submit,
+              style: [styles.submit, this.getStyle('submit')],
               name: "caret-right",
               size: 40,
-              color: "gray"
+              color: this.props.submitButtonColor || "gray"
             })}
           </TouchableHighlight>
         </View>
@@ -659,4 +659,5 @@ Comments.propTypes = {
   styles: PropTypes.object,
   likedColor: PropTypes.string,
   unlikedColor: PropTypes.string,
+  submitButtonColor: PropTypes.string,
 };
