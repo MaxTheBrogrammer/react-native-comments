@@ -59,7 +59,7 @@ export default class Comments extends PureComponent {
   }
 
   getStyle(name) {
-    this.props.styles && this.props.styles[name] ? this.props.styles[name] : {};
+    return this.props.styles && this.props.styles[name] ? this.props.styles[name] : {};
   }
 
   setLikesModalVisible(visible) {

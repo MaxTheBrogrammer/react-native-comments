@@ -89,7 +89,7 @@ export default class Comment extends PureComponent {
   }
 
   getStyle(name) {
-    this.props.styles && this.props.styles[name] ? this.props.styles[name] : {};
+    return this.props.styles && this.props.styles[name] ? this.props.styles[name] : {};
   }
 
   handleReport() {
