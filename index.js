@@ -445,9 +445,6 @@ export default class Comments extends PureComponent {
             })}
           </TouchableHighlight>
         </View>
-        {!this.props.data || this.props.data.length < 1 ? (
-          <Text style={{ textAlign: "center" }}>No comments yet</Text>
-        ) : null}
 
         {!this.props.loadingComments &&
         this.props.data &&
@@ -474,7 +471,7 @@ export default class Comments extends PureComponent {
           </TouchableHighlight>
         ) : null}
         {/* Comments */}
-        {this.props.data ? (
+        {this.props.data.length > 1 ? (
           <FlatList
             keyboardShouldPersistTaps="always"
             style={{ backgroundColor: "white" }}
@@ -484,7 +481,7 @@ export default class Comments extends PureComponent {
             keyExtractor={item => this.props.keyExtractor(item) + ""}
             renderItem={this.renderComment}
           />
-        ) : null}
+        ) : <Text style={{ textAlign: "center" }}>No comments yet</Text>}
 
         {this.props.loadingComments ? (
           <View
@@ -629,6 +626,7 @@ export default class Comments extends PureComponent {
 
 Comments.propTypes = {
   data: PropTypes.array.isRequired,
+  loadingComments: PropTypes.bool,
   viewingUserName: PropTypes.string,
   initialDisplayCount: PropTypes.number,
   editMinuteLimit: PropTypes.number,
