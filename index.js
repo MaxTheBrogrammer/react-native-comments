@@ -55,6 +55,11 @@ export default class Comments extends PureComponent {
     this.handleLikesTap = this.handleLikesTap.bind(this);
     this.handleEditAction = this.handleEditAction.bind(this);
     this.renderLike = this.renderLike.bind(this);
+    this.getStyle = this.getStyle.bind(this);
+  }
+
+  getStyle(name) {
+    this.props.styles && this.props.styles[name] ? this.props.styles[name] : {};
   }
 
   setLikesModalVisible(visible) {
