@@ -434,6 +434,7 @@ export default class Comments extends PureComponent {
             onChangeText={text => this.setState({ newCommentText: text })}
             placeholder={"Write comment"}
             numberOfLines={3}
+            placeholderTextColor={this.props.inputPlaceholderTextColor}
           />
           <TouchableHighlight
             onPress={() => {
@@ -588,6 +589,7 @@ export default class Comments extends PureComponent {
                 onChangeText={text => this.setState({ editCommentText: text })}
                 placeholder={"Edit comment"}
                 numberOfLines={3}
+                placeholderTextColor={this.props.inputPlaceholderTextColor}
               />
               <View
                 style={{
@@ -660,4 +662,5 @@ Comments.propTypes = {
   likedColor: PropTypes.string,
   unlikedColor: PropTypes.string,
   submitButtonColor: PropTypes.string,
+  inputPlaceholderTextColor: PropTypes.string,
 };
