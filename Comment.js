@@ -147,7 +147,7 @@ export default class Comment extends PureComponent {
   }
 
   render() {
-    console.log('generateComment styles', this.props.styles)
+    console.log('render styles', this.props.styles, this.props.styles['commentContainer'])
     return (
       <View
         style={[styles.commentContainer, this.getStyle("commentContainer")]}
