@@ -525,11 +525,7 @@ export default class Comments extends PureComponent {
               Show more
             </Text>
           </TouchableHighlight>
-        ) : (
-          <Text style={{ textAlign: "center", color: "gray" }}>
-            No comments yet
-          </Text>
-        )}
+        ) : null}
 
         <Modal
           animationType={"slide"}
