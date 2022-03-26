@@ -170,9 +170,10 @@ export default class Comments extends PureComponent {
    *
    * Generates a single comment
    * */
-  generateComment(c) {
+  generateComment(c, styles) {
     return (
       <Comment
+        styles={styles}
         data={c}
         id={this.props.keyExtractor(c)}
         usernameTapAction={this.handleUsernameTap}
@@ -206,13 +207,13 @@ export default class Comments extends PureComponent {
   /**
    * Renders comments children
    * */
-  renderChildren(items) {
+  renderChildren(items, styles) {
     if (!items || !items.length) return;
     let self = this;
     return items.map(function(c) {
       return (
         <View key={self.props.keyExtractor(c) + "" + Math.random()}>
-          {self.generateComment(c)}
+          {self.generateComment(c, styles)}
         </View>
       );
     });
@@ -285,11 +286,11 @@ export default class Comments extends PureComponent {
   /**
    * Renders a comment with pagination
    * */
-  renderComment(c) {
+  renderComment(c, styles) {
     const item = c.item;
     return (
       <View>
-        {this.generateComment(item)}
+        {this.generateComment(item, styles)}
         <View style={{ marginLeft: 40 }}>
           {item.childrenCount && this.props.childPropName ? (
             <TouchableHighlight onPress={() => this.toggleExpand(item)}>
@@ -352,7 +353,8 @@ export default class Comments extends PureComponent {
 
                 {this.renderChildren(
                   item[this.props.childPropName],
-                  this.props.keyExtractor(item)
+                  this.props.styles
+                  // this.props.keyExtractor(item)
                 )}
 
                 {this.props.childrenCountExtractor(item) >
@@ -479,7 +481,7 @@ export default class Comments extends PureComponent {
             extraData={this.props.lastCommentUpdate}
             initialNumToRender={this.props.initialDisplayCount || 20}
             keyExtractor={item => this.props.keyExtractor(item) + ""}
-            renderItem={this.renderComment}
+            renderItem={(item) => {this.renderComment(item, this.props.styles)}}
           />
         ) : <Text style={{ textAlign: "center" }}>No comments yet</Text>}
 
