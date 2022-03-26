@@ -149,7 +149,7 @@ export default class Comment extends PureComponent {
   render() {
     return (
       <View
-        style={[styles.commentContainer, this.getStyle("rightContent")]}
+        style={[styles.commentContainer, this.getStyle("commentContainer")]}
       >
         <View style={[styles.left, this.getStyle("left")]}>
           <TouchableHighlight onPress={this.handleUsernameTap}>
