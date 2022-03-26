@@ -118,7 +118,7 @@ export default class Comments extends PureComponent {
   focusOnReplyInput(id) {
     let input = this.textInputs["input" + id];
 
-    input.measure((x, y, width, height, pageX, pageY) => {
+    input && input.measure((x, y, width, height, pageX, pageY) => {
       console.log(pageY);
       input.focus();
       this.props.replyAction(pageY);
