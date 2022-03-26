@@ -85,10 +85,12 @@ export default class Comment extends PureComponent {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUsernameTap = this.handleUsernameTap.bind(this);
     this.handleLikesTap = this.handleLikesTap.bind(this);
+    this.getStyle = this.getStyle.bind(this)
   }
 
-  getStyle = name =>
+  getStyle(name) {
     this.props.styles && this.props.styles[name] ? this.props.styles[name] : {};
+  }
 
   handleReport() {
     Alert.alert(
