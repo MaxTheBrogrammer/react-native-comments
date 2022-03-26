@@ -12,9 +12,63 @@ import {
 } from "react-native";
 
 import PropTypes from "prop-types";
-import TimeAgo from "react-native-timeago";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
+
+function timeDifference(current, previous) {
+
+  var msPerMinute = 60 * 1000;
+  var msPerHour = msPerMinute * 60;
+  var msPerDay = msPerHour * 24;
+  var msPerMonth = msPerDay * 30;
+  var msPerYear = msPerDay * 365;
+
+  var elapsed = current - previous;
+
+  if (elapsed < msPerMinute) {
+      return 'Now';
+  }
+
+  else if (elapsed < msPerHour) {
+      return Math.round(elapsed / msPerMinute) + ' minutes ago';
+  }
+
+  else if (elapsed < msPerDay) {
+      return Math.round(elapsed / msPerHour) + ' hours ago';
+  }
+
+  else if (elapsed < msPerMonth) {
+      return Math.round(elapsed / msPerDay) + ' days ago';
+  }
+
+  else if (elapsed < msPerYear) {
+      return Math.round(elapsed / msPerMonth) + ' months ago';
+  }
+
+  else {
+      return Math.round(elapsed / msPerYear) + ' years ago';
+  }
+}
+
+function convertToDate (value) {
+  if (value === undefined || value === null || value === '') {
+    return new Date();
+  }
+  if (typeof value === 'string' || typeof value === 'number') {
+    return moment(value).toDate();
+  }
+  if (typeof value === 'object' && typeof value.seconds === 'number') {
+    try {
+      return value.toDate();
+    } catch (err) {
+      return new Date();
+    }
+  }
+  if (typeof value === 'object') {
+    return value;
+  }
+  return new Date();
+};
 
 export default class Comment extends PureComponent {
   constructor(props) {
@@ -142,10 +196,11 @@ export default class Comment extends PureComponent {
             </Text>
           </View>
           <View style={styles.rightActionBar}>
-            <TimeAgo
-              style={[styles.time, this.getStyle("timeAgoText")]}
-              time={this.props.updatedAt}
-            />
+            <Text
+            style={[styles.time, this.getStyle("timeAgoText")]}
+            >
+              {timeDifference(new Date(), convertToDate(this.props.updatedAt))}
+            </Text>
             {this.props.likeAction ? (
               <TouchableHighlight
                 style={styles.actionButton}
