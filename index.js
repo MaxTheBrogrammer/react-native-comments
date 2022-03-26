@@ -481,7 +481,7 @@ export default class Comments extends PureComponent {
             extraData={this.props.lastCommentUpdate}
             initialNumToRender={this.props.initialDisplayCount || 20}
             keyExtractor={item => this.props.keyExtractor(item) + ""}
-            renderItem={(item) => {this.renderComment(item, this.props.styles)}}
+            renderItem={(item) => { return this.renderComment(item, this.props.styles)}}
           />
         ) : <Text style={{ textAlign: "center" }}>No comments yet</Text>}
 
