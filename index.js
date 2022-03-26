@@ -171,6 +171,7 @@ export default class Comments extends PureComponent {
    * Generates a single comment
    * */
   generateComment(c, styles) {
+    console.log('generateComment styles', styles)
     return (
       <Comment
         styles={styles}
@@ -287,6 +288,7 @@ export default class Comments extends PureComponent {
    * Renders a comment with pagination
    * */
   renderComment(c, styles) {
+    console.log('renderComment styles', styles)
     const item = c.item;
     return (
       <View>
