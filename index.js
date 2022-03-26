@@ -652,4 +652,5 @@ Comments.propTypes = {
   likeAction: PropTypes.func,
   paginateAction: PropTypes.func,
   backgroundColor: PropTypes.string,
+  styles: PropTypes.object,
 };
