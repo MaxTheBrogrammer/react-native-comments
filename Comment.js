@@ -212,9 +212,9 @@ export default class Comment extends PureComponent {
                   <Text
                     style={[
                       styles.actionText,
-                      { color: this.props.liked ? "#4DB2DF" : null },
                       this.getStyle("actionText"),
-                      this.getStyle("likeText")
+                      this.getStyle("likeText"),
+                      { color: this.props.liked ? this.props.likedColor || "#4DB2DF" : this.props.unlikedColor || "#9B9B9B" },
                     ]}
                   >
                     Like{" "}
@@ -344,5 +344,7 @@ Comment.propTypes = {
   reported: PropTypes.bool,
   updatedAt: PropTypes.string,
   username: PropTypes.string,
-  usernameTapAction: PropTypes.func
+  usernameTapAction: PropTypes.func,
+  likedColor: PropTypes.string,
+  unlikedColor: PropTypes.string
 };

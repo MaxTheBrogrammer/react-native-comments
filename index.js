@@ -170,10 +170,12 @@ export default class Comments extends PureComponent {
    *
    * Generates a single comment
    * */
-  generateComment(c, styles) {
+  generateComment(c, styles, likedColor, unlikedColor) {
     return (
       <Comment
         styles={styles}
+        likedColor={likedColor}
+        unlikedColor={unlikedColor}
         data={c}
         id={this.props.keyExtractor(c)}
         usernameTapAction={this.handleUsernameTap}
@@ -207,13 +209,13 @@ export default class Comments extends PureComponent {
   /**
    * Renders comments children
    * */
-  renderChildren(items, styles) {
+  renderChildren(items, styles, likedColor, unlikedColor) {
     if (!items || !items.length) return;
     let self = this;
     return items.map(function(c) {
       return (
         <View key={self.props.keyExtractor(c) + "" + Math.random()}>
-          {self.generateComment(c, styles)}
+          {self.generateComment(c, styles, likedColor, unlikedColor)}
         </View>
       );
     });
@@ -286,11 +288,11 @@ export default class Comments extends PureComponent {
   /**
    * Renders a comment with pagination
    * */
-  renderComment(c, styles) {
+  renderComment(c, styles, likedColor, unlikedColor) {
     const item = c.item;
     return (
       <View>
-        {this.generateComment(item, styles)}
+        {this.generateComment(item, styles, likedColor, unlikedColor)}
         <View style={{ marginLeft: 40 }}>
           {item.childrenCount && this.props.childPropName ? (
             <TouchableHighlight onPress={() => this.toggleExpand(item)}>
@@ -353,7 +355,9 @@ export default class Comments extends PureComponent {
 
                 {this.renderChildren(
                   item[this.props.childPropName],
-                  this.props.styles
+                  styles,
+                  likedColor, 
+                  unlikedColor
                   // this.props.keyExtractor(item)
                 )}
 
@@ -481,7 +485,7 @@ export default class Comments extends PureComponent {
             extraData={this.props.lastCommentUpdate}
             initialNumToRender={this.props.initialDisplayCount || 20}
             keyExtractor={item => this.props.keyExtractor(item) + ""}
-            renderItem={(item) => { return this.renderComment(item, this.props.styles)}}
+            renderItem={(item) => { return this.renderComment(item, this.props.styles, this.props.likedColor, this.props.unlikedColor)}}
           />
         ) : <Text style={{ textAlign: "center" }}>No comments yet</Text>}
 
@@ -653,4 +657,6 @@ Comments.propTypes = {
   paginateAction: PropTypes.func,
   backgroundColor: PropTypes.string,
   styles: PropTypes.object,
+  likedColor: PropTypes.string,
+  unlikedColor: PropTypes.string,
 };
