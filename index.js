@@ -385,14 +385,14 @@ export default class Comments extends PureComponent {
                 ) : null}
               </View>
             ) : null}
-            <View style={styles.inputSection}>
+            <View style={[styles.inputSection, this.getStyle('inputSection')]}>
               <TextInput
                 ref={input =>
                   (this.textInputs[
                     "input" + this.props.keyExtractor(item)
                   ] = input)
                 }
-                style={styles.input}
+                style={[styles.input, this.getStyle('input')]}
                 multiline={true}
                 value={this.state.replyCommentText}
                 onChangeText={text => this.setState({ replyCommentText: text })}
