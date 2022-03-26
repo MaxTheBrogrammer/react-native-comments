@@ -445,11 +445,11 @@ export default class Comments extends PureComponent {
             })}
           </TouchableHighlight>
         </View>
-        {!this.state.loadingComments && !this.props.data ? (
+        {!this.props.data || this.props.data.length < 1 ? (
           <Text style={{ textAlign: "center" }}>No comments yet</Text>
         ) : null}
 
-        {!this.state.loadingComments &&
+        {!this.props.loadingComments &&
         this.props.data &&
         this.props.data.length &&
         this.props.paginateAction ? (
@@ -486,7 +486,7 @@ export default class Comments extends PureComponent {
           />
         ) : null}
 
-        {this.state.loadingComments ? (
+        {this.props.loadingComments ? (
           <View
             style={{
               position: "absolute",
@@ -509,7 +509,7 @@ export default class Comments extends PureComponent {
           </View>
         ) : null}
 
-        {!this.state.loadingComments &&
+        {!this.props.loadingComments &&
         this.props.data &&
         this.props.data.length &&
         this.props.paginateAction ? (
