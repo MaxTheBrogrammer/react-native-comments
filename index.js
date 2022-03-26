@@ -426,9 +426,9 @@ export default class Comments extends PureComponent {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View style={styles.inputSection}>
+        <View style={[styles.inputSection, this.getStyle('inputSection')]}>
           <TextInput
-            style={styles.input}
+            style={[styles.input, this.getStyle('input')]}
             ref={input => (this.textInputs["inputMain"] = input)}
             multiline={true}
             onChangeText={text => this.setState({ newCommentText: text })}
