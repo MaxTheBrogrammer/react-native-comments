@@ -187,7 +187,7 @@ export default class Comments extends PureComponent {
         image={this.props.imageExtractor(c)}
         child={true}
         isOwnComment={
-          this.props.usernameExtractor(c) == this.props.viewingUserName
+          this.props.userIdExtractor(c) == this.props.viewingUserId
         }
         reportAction={this.props.reportAction ? this.handleReport : null}
         liked={this.props.likeExtractor ? this.props.likeExtractor(c) : null}
@@ -250,7 +250,7 @@ export default class Comments extends PureComponent {
    * */
   canUserEdit(item) {
     if (
-      this.props.viewingUserName == this.props.usernameExtractor(item) ||
+      this.props.viewingUserId == this.props.userIdExtractor(item) ||
       this.props.userIsAdmin
     ) {
       if (!this.props.editMinuteLimit) return true;
@@ -304,7 +304,7 @@ export default class Comments extends PureComponent {
                 />
                 <Text style={styles.repliedUsername}>
                   {" "}
-                  {this.props.usernameExtractor(
+                  {this.props.userIdExtractor(
                     item[this.props.childPropName][0]
                   )}{" "}
                 </Text>
@@ -474,7 +474,7 @@ export default class Comments extends PureComponent {
         {this.props.data.length > 1 ? (
           <FlatList
             keyboardShouldPersistTaps="always"
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: this.props.backgroundColor }}
             data={this.props.data}
             extraData={this.props.lastCommentUpdate}
             initialNumToRender={this.props.initialDisplayCount || 20}
@@ -624,6 +624,7 @@ Comments.propTypes = {
   data: PropTypes.array.isRequired,
   loadingComments: PropTypes.bool,
   viewingUserName: PropTypes.string,
+  viewingUserId: PropTypes.string,
   initialDisplayCount: PropTypes.number,
   editMinuteLimit: PropTypes.number,
   usernameTapAction: PropTypes.func,
@@ -632,6 +633,7 @@ Comments.propTypes = {
   keyExtractor: PropTypes.func.isRequired,
   parentIdExtractor: PropTypes.func,
   usernameExtractor: PropTypes.func.isRequired,
+  userIdExtractor: PropTypes.func.isRequired,
   editTimeExtractor: PropTypes.func.isRequired,
   createdTimeExtractor: PropTypes.func.isRequired,
   bodyExtractor: PropTypes.func.isRequired,
@@ -646,5 +648,6 @@ Comments.propTypes = {
   editAction: PropTypes.func.isRequired,
   reportAction: PropTypes.func,
   likeAction: PropTypes.func,
-  paginateAction: PropTypes.func
+  paginateAction: PropTypes.func,
+  backgroundColor: PropTypes.string,
 };
