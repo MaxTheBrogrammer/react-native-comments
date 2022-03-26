@@ -152,7 +152,7 @@ export default class Comment extends PureComponent {
       <View
         style={[styles.commentContainer, this.getStyle("commentContainer")]}
       >
-        <View style={styles.left}>
+        <View style={[styles.left, this.getStyle("left")]}>
           <TouchableHighlight onPress={this.handleUsernameTap}>
             <View style={{ alignItems: "center" }}>
               <Image
@@ -169,12 +169,12 @@ export default class Comment extends PureComponent {
               />
               {this.props.likesNr && this.props.likeAction ? (
                 <TouchableHighlight
-                  style={[styles.actionButton, { paddingTop: 5 }]}
+                  style={[styles.actionButton, { paddingTop: 5 }, this.getStyle("actionButton")]}
                   onPress={this.handleLikesTap}
                 >
                   <View style={{ flexDirection: "row" }}>
                     <Icon name="heart" color="#df1740" size={15} />
-                    <Text style={styles.likeNr}> {this.props.likesNr}</Text>
+                    <Text style={[styles.likeNr, this.getStyle("likeNr")]}> {this.props.likesNr}</Text>
                   </View>
                 </TouchableHighlight>
               ) : null}
@@ -184,10 +184,10 @@ export default class Comment extends PureComponent {
         <TouchableOpacity
           onPress={() => this.setState({ menuVisible: false })}
           onLongPress={() => this.setModalVisible()}
-          style={styles.right}
+          style={[styles.right, this.getStyle("right")]}
         >
-          <View style={styles.rightContent}>
-            <View style={styles.rightContentTop}>
+          <View style={[styles.rightContent, this.getStyle("rightContent")]}>
+            <View style={[styles.rightContentTop, this.getStyle("rightContentTop")]}>
               <TouchableHighlight onPress={this.handleUsernameTap}>
                 <Text style={[styles.name, this.getStyle("username")]}>
                   {this.props.username}
@@ -198,7 +198,7 @@ export default class Comment extends PureComponent {
               {this.props.body}
             </Text>
           </View>
-          <View style={styles.rightActionBar}>
+          <View style={[styles.rightActionBar, this.getStyle("rightActionBar")]}>
             <Text
             style={[styles.time, this.getStyle("timeAgoText")]}
             >
@@ -206,7 +206,7 @@ export default class Comment extends PureComponent {
             </Text>
             {this.props.likeAction ? (
               <TouchableHighlight
-                style={styles.actionButton}
+                style={[styles.actionButton, this.getStyle("actionButton")]}
                 onPress={this.handleLike}
               >
                 <View style={{ flexDirection: "row" }}>
@@ -225,7 +225,7 @@ export default class Comment extends PureComponent {
             ) : null}
             {this.props.replyAction ? (
               <TouchableHighlight
-                style={styles.actionButton}
+                style={[styles.actionButton, this.getStyle("actionButton")]}
                 onPress={this.handleReply}
               >
                 <Text
@@ -242,11 +242,11 @@ export default class Comment extends PureComponent {
           </View>
         </TouchableOpacity>
         {this.state.menuVisible ? (
-          <View style={styles.menu}>
+          <View style={[styles.menu, this.getStyle("menu")]}>
             <View style={{ flex: 1.5 }}>
               {this.props.canEdit ? (
                 <TouchableOpacity
-                  style={styles.menuItem}
+                  style={[styles.menuItem, this.getStyle("menuItem")]}
                   onPress={this.handleEdit}
                 >
                   <Text
@@ -262,7 +262,7 @@ export default class Comment extends PureComponent {
               ) : null}
               {this.props.reportAction && !this.props.isOwnComment ? (
                 <TouchableOpacity
-                  style={styles.menuItem}
+                  style={[styles.menuItem, this.getStyle("menuItem")]}
                   onPress={this.handleReport}
                 >
                   {this.props.reported ? (
@@ -291,7 +291,7 @@ export default class Comment extends PureComponent {
               ) : null}
               {this.props.canEdit ? (
                 <TouchableOpacity
-                  style={styles.menuItem}
+                  style={[styles.menuItem, this.getStyle("menuItem")]}
                   onPress={this.handleDelete}
                 >
                   <Text
@@ -314,7 +314,7 @@ export default class Comment extends PureComponent {
               }}
             >
               <TouchableOpacity
-                style={styles.menuClose}
+                style={[styles.menuClose, this.getStyle("menuClose")]}
                 onPress={() => this.setState({ menuVisible: false })}
               >
                 <Text style={{ color: "silver" }}>X</Text>
