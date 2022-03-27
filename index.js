@@ -284,6 +284,7 @@ export default class Comments extends PureComponent {
    * */
   renderComment(c, styles, likedColor, unlikedColor) {
     const item = c.item;
+    console.log('should show replies for  comment:', this.props.keyExtractor(item), this.isExpanded(this.props.keyExtractor(item)))
     return (
       <View>
         {this.generateComment(item, styles, likedColor, unlikedColor)}
