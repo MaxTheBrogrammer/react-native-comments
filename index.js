@@ -93,6 +93,7 @@ export default class Comments extends PureComponent {
     let index = expanded.indexOf(id);
 
     if (index === -1) {
+      console.log('expanding key: ', id)
       expanded.push(id);
     } else {
       expanded.splice(index, 1);
@@ -292,12 +293,12 @@ export default class Comments extends PureComponent {
               <View style={styles.repliedSection}>
                 <Text style={[styles.repliedCount, this.getStyle('repliedCount')]}>
                   {this.props.childrenCountExtractor(item) > 1
-                    ? "View all "
+                    ? "View All "
                     : "View "}
                   {this.props.childrenCountExtractor(item) > 1 ? this.props.childrenCountExtractor(item) : ''}
                   {this.props.childrenCountExtractor(item) > 1
-                    ? " replies"
-                    : " reply"}
+                    ? " Replies"
+                    : " Reply"}
                 </Text>
               </View>
             </Pressable>
