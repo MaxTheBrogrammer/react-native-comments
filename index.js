@@ -298,14 +298,14 @@ export default class Comments extends PureComponent {
                     )
                   }}
                 />
-                <Text style={styles.repliedUsername}>
+                <Text style={[styles.repliedUsername, this.getStyle('repliedUsername')]}>
                   {" "}
                   {this.props.userIdExtractor(
                     item[this.props.childPropName][0]
                   )}{" "}
                 </Text>
-                <Text style={styles.repliedText}>replied</Text>
-                <Text style={styles.repliedCount}>
+                <Text style={[styles.repliedText, this.getStyle('repliedText')]}>replied</Text>
+                <Text style={[styles.repliedCount, this.getStyle('repliedCount')]}>
                   {" "}
                   * {this.props.childrenCountExtractor(item)}
                   {this.props.childrenCountExtractor(item) > 1
