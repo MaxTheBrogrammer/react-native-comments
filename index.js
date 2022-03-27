@@ -289,10 +289,10 @@ export default class Comments extends PureComponent {
         <View style={{ marginLeft: 40 }}>
           {this.props.childrenCountExtractor(item) && this.props.childPropName ? (
             <Pressable onPress={() => this.toggleExpand(item)}>
-              <View style={styles.repliedSection}>
+              <View style={[styles.repliedSection, this.getStyle('repliedSection')]}>
                 <Text style={[styles.repliedCount, this.getStyle('repliedCount')]}>
-                  {this.props.childrenCountExtractor(item) > 1
-                    ? "View All "
+                  {this.isExpanded(this.props.keyExtractor(item))
+                    ? "Hide "
                     : "View "}
                   {this.props.childrenCountExtractor(item) > 1 ? this.props.childrenCountExtractor(item) : ''}
                   {this.props.childrenCountExtractor(item) > 1
@@ -382,7 +382,7 @@ export default class Comments extends PureComponent {
                 multiline={true}
                 value={this.state.replyCommentText}
                 onChangeText={text => this.setState({ replyCommentText: text })}
-                placeholder={"Write comment"}
+                placeholder={"Write reply"}
                 numberOfLines={3}
                 placeholderTextColor={this.props.inputPlaceholderTextColor}
               />
