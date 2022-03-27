@@ -405,7 +405,7 @@ export default class Comments extends PureComponent {
                 {this.renderIcon({
                   style: [styles.submit, this.getStyle('submit')],
                   name: "send",
-                  size: 35,
+                  size: 25,
                   color: this.props.submitButtonColor || "gray"
                 })}
               </TouchableHighlight>
@@ -440,7 +440,7 @@ export default class Comments extends PureComponent {
             {this.renderIcon({
               style: [styles.submit, this.getStyle('submit')],
               name: "send",
-              size: 35,
+              size: 25,
               color: this.props.submitButtonColor || "gray"
             })}
           </TouchableHighlight>
