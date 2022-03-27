@@ -290,27 +290,11 @@ export default class Comments extends PureComponent {
           {this.props.childrenCountExtractor(item) && this.props.childPropName ? (
             <Pressable onPress={() => this.toggleExpand(item)}>
               <View style={styles.repliedSection}>
-                <Image
-                  style={styles.repliedImg}
-                  source={{
-                    uri: this.props.imageExtractor(
-                      item[this.props.childPropName][0]
-                    )
-                  }}
-                />
-                <Text style={[styles.repliedUsername, this.getStyle('repliedUsername')]}>
-                  {" "}
-                  {this.props.usernameExtractor(
-                    item[this.props.childPropName][0]
-                  )}{" replied"}
-                </Text>
                 <Text style={[styles.repliedCount, this.getStyle('repliedCount')]}>
-                  *
-                  {this.props.childrenCountExtractor(item)}
                   {this.props.childrenCountExtractor(item) > 1
-                    ? "View all"
-                    : "View"}
-                  {this.props.childrenCountExtractor(item)}
+                    ? "View all "
+                    : "View "}
+                  {this.props.childrenCountExtractor(item) > 1 ? this.props.childrenCountExtractor(item) : ''}
                   {this.props.childrenCountExtractor(item) > 1
                     ? " replies"
                     : " reply"}
