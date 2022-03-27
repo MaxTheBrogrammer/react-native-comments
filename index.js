@@ -471,7 +471,7 @@ export default class Comments extends PureComponent {
           </Pressable>
         ) : null}
         {/* Comments */}
-        {this.props.data.length > 1 ? (
+        {this.props.data.length > 0 ? (
           <FlatList
             keyboardShouldPersistTaps="always"
             style={{ backgroundColor: this.props.backgroundColor }}
