@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 import PropTypes from "prop-types";
-import Icon from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from "./styles";
 
 function timeDifference(current, previous) {
@@ -171,7 +171,7 @@ export default class Comment extends PureComponent {
                   onPress={this.handleLikesTap}
                 >
                   <View style={{ flexDirection: "row" }}>
-                    <Icon name="heart" color={this.props.likedColor || 'grey'} size={15} />
+                    <MaterialCommunityIcons name="thumb-up" color={this.props.likedColor || 'grey'} size={15} />
                     <Text style={[styles.likeNr, this.getStyle("likeNr")]}> {this.props.likesNr}</Text>
                   </View>
                 </Pressable>
