@@ -16,9 +16,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import PropTypes from "prop-types";
-import IconFa from "react-native-vector-icons/FontAwesome";
-import IconFa5 from "react-native-vector-icons/FontAwesome5Pro";
-import IconFa5Pro from "react-native-vector-icons/FontAwesome5Pro";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from "./styles";
 import Collapsible from "react-native-collapsible";
 import Comment from "./Comment";
@@ -79,14 +77,9 @@ export default class Comments extends PureComponent {
   }
 
   renderIcon(props) {
-    if (this.props.fa5) {
-      return <IconFa5 {...props} />;
-    }
-    if (this.props.fa5Pro) {
-      return <IconFa5Pro {...props} />;
-    }
-
-    return <IconFa {...props} />;
+    return <MaterialIcons
+      {...props}
+    />
   }
 
   isExpanded(id) {
@@ -212,7 +205,7 @@ export default class Comments extends PureComponent {
   renderChildren(items, styles, likedColor, unlikedColor) {
     if (!items || !items.length) return;
     let self = this;
-    return items.map(function(c) {
+    return items.map(function (c) {
       return (
         <View key={self.props.keyExtractor(c) + "" + Math.random()}>
           {self.generateComment(c, styles, likedColor, unlikedColor)}
@@ -328,10 +321,10 @@ export default class Comments extends PureComponent {
             collapsed={!this.isExpanded(this.props.keyExtractor(item))}
           >
             {this.props.childrenCountExtractor(item) &&
-            this.props.paginateAction ? (
+              this.props.paginateAction ? (
               <View>
                 {this.props.childPropName &&
-                this.props.childrenCountExtractor(item) >
+                  this.props.childrenCountExtractor(item) >
                   item[this.props.childPropName].length ? (
                   <TouchableHighlight
                     onPress={() =>
@@ -356,14 +349,14 @@ export default class Comments extends PureComponent {
                 {this.renderChildren(
                   item[this.props.childPropName],
                   styles,
-                  likedColor, 
+                  likedColor,
                   unlikedColor
                   // this.props.keyExtractor(item)
                 )}
 
                 {this.props.childrenCountExtractor(item) >
                   item[this.props.childPropName].length &&
-                this.props.paginateAction ? (
+                  this.props.paginateAction ? (
                   <TouchableHighlight
                     onPress={() =>
                       this.paginate(
@@ -388,9 +381,9 @@ export default class Comments extends PureComponent {
             <View style={[styles.inputSection, this.getStyle('inputSection')]}>
               <TextInput
                 ref={input =>
-                  (this.textInputs[
-                    "input" + this.props.keyExtractor(item)
-                  ] = input)
+                (this.textInputs[
+                  "input" + this.props.keyExtractor(item)
+                ] = input)
                 }
                 style={[styles.input, this.getStyle('input')]}
                 multiline={true}
@@ -411,7 +404,7 @@ export default class Comments extends PureComponent {
               >
                 {this.renderIcon({
                   style: [styles.submit, this.getStyle('submit')],
-                  name: "message-plus",
+                  name: "add-comment",
                   size: 35,
                   color: this.props.submitButtonColor || "gray"
                 })}
@@ -446,7 +439,7 @@ export default class Comments extends PureComponent {
           >
             {this.renderIcon({
               style: [styles.submit, this.getStyle('submit')],
-              name: "message-plus",
+              name: "add-comment",
               size: 35,
               color: this.props.submitButtonColor || "gray"
             })}
@@ -454,9 +447,9 @@ export default class Comments extends PureComponent {
         </View>
 
         {!this.props.loadingComments &&
-        this.props.data &&
-        this.props.data.length &&
-        this.props.paginateAction ? (
+          this.props.data &&
+          this.props.data.length &&
+          this.props.paginateAction ? (
           <TouchableHighlight
             onPress={() => {
               this.paginate(
@@ -486,7 +479,7 @@ export default class Comments extends PureComponent {
             extraData={this.props.lastCommentUpdate}
             initialNumToRender={this.props.initialDisplayCount || 20}
             keyExtractor={item => this.props.keyExtractor(item) + ""}
-            renderItem={(item) => { return this.renderComment(item, this.props.styles, this.props.likedColor, this.props.unlikedColor)}}
+            renderItem={(item) => { return this.renderComment(item, this.props.styles, this.props.likedColor, this.props.unlikedColor) }}
           />
         ) : <Text style={{ textAlign: "center" }}>No comments yet</Text>}
 
@@ -514,9 +507,9 @@ export default class Comments extends PureComponent {
         ) : null}
 
         {!this.props.loadingComments &&
-        this.props.data &&
-        this.props.data.length &&
-        this.props.paginateAction ? (
+          this.props.data &&
+          this.props.data.length &&
+          this.props.paginateAction ? (
           <TouchableHighlight
             style={{ height: 70 }}
             onPress={() => {
