@@ -572,7 +572,7 @@ export default class Comments extends PureComponent {
             this.setState({ editModalData: null });
           }}
         >
-          <View style={[styles.editModalContainer, this.getStyle(editModalContainer)]}>
+          <View style={[styles.editModalContainer, this.getStyle('editModalContainer')]}>
             <View style={[styles.editModal, this.getStyle('editModal')]}>
               <TextInput
                 ref={input => (this.textInputs["editCommentInput"] = input)}
