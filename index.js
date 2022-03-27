@@ -93,7 +93,6 @@ export default class Comments extends PureComponent {
     let index = expanded.indexOf(id);
 
     if (index === -1) {
-      console.log('expanding key: ', id)
       expanded.push(id);
     } else {
       expanded.splice(index, 1);
@@ -284,7 +283,6 @@ export default class Comments extends PureComponent {
    * */
   renderComment(c, styles, likedColor, unlikedColor) {
     const item = c.item;
-    console.log('should show replies for  comment:', this.props.keyExtractor(item), this.isExpanded(this.props.keyExtractor(item)))
     return (
       <View>
         {this.generateComment(item, styles, likedColor, unlikedColor)}
@@ -366,7 +364,13 @@ export default class Comments extends PureComponent {
                   </Pressable>
                 ) : null}
               </View>
-            ) : null}
+            ) : this.renderChildren(
+              item[this.props.childPropName],
+              styles,
+              likedColor,
+              unlikedColor
+              // this.props.keyExtractor(item)
+            )}
             <View style={[styles.inputSection, this.getStyle('inputSection')]}>
               <TextInput
                 ref={input =>
@@ -380,6 +384,7 @@ export default class Comments extends PureComponent {
                 onChangeText={text => this.setState({ replyCommentText: text })}
                 placeholder={"Write comment"}
                 numberOfLines={3}
+                placeholderTextColor={this.props.inputPlaceholderTextColor}
               />
               <Pressable
                 onPress={() => {
