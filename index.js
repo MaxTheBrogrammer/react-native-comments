@@ -287,7 +287,7 @@ export default class Comments extends PureComponent {
       <View>
         {this.generateComment(item, styles, likedColor, unlikedColor)}
         <View style={{ marginLeft: 40 }}>
-          {item.childrenCount && this.props.childPropName ? (
+          {this.props.childrenCountExtractor(item) && this.props.childPropName ? (
             <Pressable onPress={() => this.toggleExpand(item)}>
               <View style={styles.repliedSection}>
                 <Image
