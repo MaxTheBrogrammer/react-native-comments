@@ -546,7 +546,7 @@ export default class Comments extends PureComponent {
             }}
           >
             <View style={{ position: "relative", left: 50, top: 5 }}>
-              {this.renderIcon({ name: "close", size: 40 })}
+              {this.renderIcon({ name: "close", size: 25 })}
             </View>
           </TouchableHighlight>
           <Text style={styles.likeHeader}>Users that liked the comment</Text>
@@ -572,11 +572,11 @@ export default class Comments extends PureComponent {
             this.setState({ editModalData: null });
           }}
         >
-          <View style={styles.editModalContainer}>
-            <View style={styles.editModal}>
+          <View style={[styles.editModalContainer, this.getStyle(editModalContainer)]}>
+            <View style={[styles.editModal, this.getStyle('editModal')]}>
               <TextInput
                 ref={input => (this.textInputs["editCommentInput"] = input)}
-                style={styles.input}
+                style={[styles.input, this.getStyle('input')]}
                 multiline={true}
                 value={this.state.editCommentText}
                 onChangeText={text => this.setState({ editCommentText: text })}
@@ -609,7 +609,7 @@ export default class Comments extends PureComponent {
                 >
                   <View style={styles.editButtons}>
                     <Text>Save</Text>
-                    {this.renderIcon({ name: "caret-right", size: 20 })}
+                    {this.renderIcon({ name: "send", size: 20 })}
                   </View>
                 </TouchableHighlight>
               </View>
