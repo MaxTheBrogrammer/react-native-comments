@@ -546,7 +546,7 @@ export default class Comments extends PureComponent {
             }}
           >
             <View style={{ position: "relative", left: 50, top: 5 }}>
-              {this.renderIcon({ name: "close", size: 25 })}
+              {this.renderIcon({ name: "close", size: 25, color: this.props.submitButtonColor || "gray" })}
             </View>
           </TouchableHighlight>
           <Text style={styles.likeHeader}>Users that liked the comment</Text>
@@ -595,7 +595,7 @@ export default class Comments extends PureComponent {
                 >
                   <View style={[styles.editButtons, this.getStyle('editButtons')]}>
                     <Text style={this.getStyle('editButtonsText')}>Cancel</Text>
-                    {this.renderIcon({ name: "close", size: 20 })}
+                    {this.renderIcon({ name: "close", size: 20, color: this.props.submitButtonColor || "gray" })}
                   </View>
                 </TouchableHighlight>
                 <TouchableHighlight
@@ -609,7 +609,7 @@ export default class Comments extends PureComponent {
                 >
                   <View style={[styles.editButtons, this.getStyle('editButtons')]}>
                     <Text style={this.getStyle('editButtonsText')}>Save</Text>
-                    {this.renderIcon({ name: "send", size: 20 })}
+                    {this.renderIcon({ name: "send", size: 20, color: this.props.submitButtonColor || "gray" })}
                   </View>
                 </TouchableHighlight>
               </View>
