@@ -270,9 +270,9 @@ export default class Comments extends PureComponent {
         style={styles.likeButton}
         key={like.user_id + ""}
       >
-        <View style={[styles.likeContainer]}>
-          <Image style={[styles.likeImage]} source={{ uri: like.image }} />
-          <Text style={[styles.likeName]}>{like.name}</Text>
+        <View style={[styles.likeContainer, this.getStyle('likeContainer')]}>
+          <Image style={[styles.likeImage, this.getStyle('likeImage')]} source={{ uri: like.image }} />
+          <Text style={[styles.likeName, this.getStyle('likeName')]}>{like.name}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -535,29 +535,31 @@ export default class Comments extends PureComponent {
             this.setLikesModalVisible(false);
           }}
         >
-          <TouchableHighlight
-            onPress={() => this.setLikesModalVisible(false)}
-            style={{
-              position: "absolute",
-              width: 100,
-              zIndex: 9,
-              alignSelf: "flex-end",
-              top: 10
-            }}
-          >
-            <View style={{ position: "relative", left: 50, top: 5 }}>
-              {this.renderIcon({ name: "close", size: 25, color: this.props.submitButtonColor || "gray" })}
-            </View>
-          </TouchableHighlight>
-          <Text style={styles.likeHeader}>Users that liked the comment</Text>
-          {this.state.likesModalVisible ? (
-            <FlatList
-              initialNumToRender="10"
-              keyExtractor={item => item.like_id + ""}
-              data={this.state.likesModalData}
-              renderItem={this.renderLike}
-            />
-          ) : null}
+          <View style={[this.getStyle('likeModal')]}>
+            <TouchableHighlight
+              onPress={() => this.setLikesModalVisible(false)}
+              style={{
+                position: "absolute",
+                width: 100,
+                zIndex: 9,
+                alignSelf: "flex-end",
+                top: 10
+              }}
+            >
+              <View style={{ position: "relative", left: 50, top: 5 }}>
+                {this.renderIcon({ name: "close", size: 25, color: this.props.submitButtonColor || "gray" })}
+              </View>
+            </TouchableHighlight>
+            <Text style={[styles.likeHeader, this.getStyle('likeHeader')]}>Users that liked the comment</Text>
+            {this.state.likesModalVisible ? (
+              <FlatList
+                initialNumToRender="10"
+                keyExtractor={item => item.like_id + ""}
+                data={this.state.likesModalData}
+                renderItem={this.renderLike}
+              />
+            ) : null}
+          </View>
         </Modal>
 
         <Modal
