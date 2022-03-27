@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import PropTypes from "prop-types";
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from "./styles";
 import Collapsible from "react-native-collapsible";
 import Comment from "./Comment";
@@ -77,7 +77,7 @@ export default class Comments extends PureComponent {
   }
 
   renderIcon(props) {
-    return <MaterialIcons
+    return <MaterialCommunityIcons
       {...props}
     />
   }
@@ -404,7 +404,7 @@ export default class Comments extends PureComponent {
               >
                 {this.renderIcon({
                   style: [styles.submit, this.getStyle('submit')],
-                  name: "add-comment",
+                  name: "paper-airplane",
                   size: 35,
                   color: this.props.submitButtonColor || "gray"
                 })}
@@ -439,7 +439,7 @@ export default class Comments extends PureComponent {
           >
             {this.renderIcon({
               style: [styles.submit, this.getStyle('submit')],
-              name: "add-comment",
+              name: "paper-airplane",
               size: 35,
               color: this.props.submitButtonColor || "gray"
             })}
