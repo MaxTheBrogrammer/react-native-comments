@@ -534,8 +534,9 @@ export default class Comments extends PureComponent {
           onRequestClose={() => {
             this.setLikesModalVisible(false);
           }}
+          style={[this.getStyle('likeModal')]}
         >
-          <View style={[this.getStyle('likeModal')]}>
+          <View style={[this.getStyle('likeModalContainer')]}>
             <TouchableHighlight
               onPress={() => this.setLikesModalVisible(false)}
               style={{
