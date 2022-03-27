@@ -484,7 +484,7 @@ export default class Comments extends PureComponent {
               zIndex: 10,
               bottom: 0,
               height: 60,
-              backgroundColor: "rgba(255,255,255, 0.9)"
+              backgroundColor: this.props.backgroundColor || "rgba(255,255,255, 0.9)"
             }}
           >
             <ActivityIndicator
@@ -495,6 +495,7 @@ export default class Comments extends PureComponent {
                 alignItems: "center",
                 justifyContent: "center"
               }}
+              color={this.props.likedColor || 'blue'}
               size="small"
             />
           </View>
