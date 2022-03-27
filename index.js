@@ -593,7 +593,7 @@ export default class Comments extends PureComponent {
                 <TouchableHighlight
                   onPress={() => this.setEditModalVisible(false)}
                 >
-                  <View style={styles.editButtons}>
+                  <View style={[styles.editButtons, this.getStyle('editButtons')]}>
                     <Text>Cancel</Text>
                     {this.renderIcon({ name: "close", size: 20 })}
                   </View>
@@ -607,7 +607,7 @@ export default class Comments extends PureComponent {
                     this.setEditModalVisible(!this.state.editModalVisible);
                   }}
                 >
-                  <View style={styles.editButtons}>
+                  <View style={[styles.editButtons, this.getStyle('editButtons')]}>
                     <Text>Save</Text>
                     {this.renderIcon({ name: "send", size: 20 })}
                   </View>
