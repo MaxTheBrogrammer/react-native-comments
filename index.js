@@ -305,11 +305,15 @@ export default class Comments extends PureComponent {
                   )}{" replied"}
                 </Text>
                 <Text style={[styles.repliedCount, this.getStyle('repliedCount')]}>
-                  {" "}
-                  * {this.props.childrenCountExtractor(item)}
+                  *
+                  {this.props.childrenCountExtractor(item)}
                   {this.props.childrenCountExtractor(item) > 1
-                    ? "View all replies"
-                    : "View all reply"}
+                    ? "View all"
+                    : "View"}
+                  {this.props.childrenCountExtractor(item)}
+                  {this.props.childrenCountExtractor(item) > 1
+                    ? " replies"
+                    : " reply"}
                 </Text>
               </View>
             </Pressable>
