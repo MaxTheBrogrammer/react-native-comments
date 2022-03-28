@@ -569,7 +569,12 @@ export default class Comments extends PureComponent {
                 this.getStyle("likeModalClose"),
               ]}
             >
-              <View style={{ position: "relative", left: 50, top: 5 }}>
+              <View
+                style={[
+                  { position: "relative", left: 50, top: 5 },
+                  this.getStyle("likeModalCloseButton"),
+                ]}
+              >
                 {this.renderIcon({
                   name: "close",
                   size: 25,
