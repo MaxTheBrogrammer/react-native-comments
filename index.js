@@ -564,7 +564,7 @@ export default class Comments extends PureComponent {
                   width: 100,
                   zIndex: 9,
                   alignSelf: "flex-end",
-                  top: 10,
+                  top: 40,
                 },
                 this.getStyle("likeModalClose"),
               ]}
