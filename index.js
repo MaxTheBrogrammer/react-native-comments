@@ -558,23 +558,9 @@ export default class Comments extends PureComponent {
           <View style={[this.getStyle("likeModalContainer")]}>
             <Pressable
               onPress={() => this.setLikesModalVisible(false)}
-              style={[
-                {
-                  position: "absolute",
-                  width: 100,
-                  zIndex: 9,
-                  alignSelf: "flex-end",
-                  top: 40,
-                },
-                this.getStyle("likeModalClose"),
-              ]}
+              style={[this.getStyle("likeModalClose")]}
             >
-              <View
-                style={[
-                  { position: "relative", left: 50, top: 5 },
-                  this.getStyle("likeModalCloseButton"),
-                ]}
-              >
+              <View style={[this.getStyle("likeModalCloseButton")]}>
                 {this.renderIcon({
                   name: "close",
                   size: 25,
