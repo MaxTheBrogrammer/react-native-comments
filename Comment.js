@@ -2,20 +2,13 @@
  * Created by tino on 6/6/17.
  */
 import React, { PureComponent } from "react";
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  Alert
-} from "react-native";
+import { View, Text, Image, Pressable, Alert } from "react-native";
 
 import PropTypes from "prop-types";
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import styles from "./styles";
 
 function timeDifference(current, previous) {
-
   var msPerMinute = 60 * 1000;
   var msPerHour = msPerMinute * 60;
   var msPerDay = msPerHour * 24;
@@ -25,56 +18,46 @@ function timeDifference(current, previous) {
   var elapsed = current - previous;
 
   if (elapsed < msPerMinute) {
-      return 'Now';
-  }
-
-  else if (elapsed < msPerHour) {
-      return Math.round(elapsed / msPerMinute) + ' minutes ago';
-  }
-
-  else if (elapsed < msPerDay) {
-      return Math.round(elapsed / msPerHour) + ' hours ago';
-  }
-
-  else if (elapsed < msPerMonth) {
-      return Math.round(elapsed / msPerDay) + ' days ago';
-  }
-
-  else if (elapsed < msPerYear) {
-      return Math.round(elapsed / msPerMonth) + ' months ago';
-  }
-
-  else {
-      return Math.round(elapsed / msPerYear) + ' years ago';
+    return "Now";
+  } else if (elapsed < msPerHour) {
+    return Math.round(elapsed / msPerMinute) + " minutes ago";
+  } else if (elapsed < msPerDay) {
+    return Math.round(elapsed / msPerHour) + " hours ago";
+  } else if (elapsed < msPerMonth) {
+    return Math.round(elapsed / msPerDay) + " days ago";
+  } else if (elapsed < msPerYear) {
+    return Math.round(elapsed / msPerMonth) + " months ago";
+  } else {
+    return Math.round(elapsed / msPerYear) + " years ago";
   }
 }
 
-function convertToDate (value) {
-  if (value === undefined || value === null || value === '') {
+function convertToDate(value) {
+  if (value === undefined || value === null || value === "") {
     return new Date();
   }
-  if (typeof value === 'string' || typeof value === 'number') {
+  if (typeof value === "string" || typeof value === "number") {
     return moment(value).toDate();
   }
-  if (typeof value === 'object' && typeof value.seconds === 'number') {
+  if (typeof value === "object" && typeof value.seconds === "number") {
     try {
       return value.toDate();
     } catch (err) {
       return new Date();
     }
   }
-  if (typeof value === 'object') {
+  if (typeof value === "object") {
     return value;
   }
   return new Date();
-};
+}
 
 export default class Comment extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      menuVisible: false
+      menuVisible: false,
     };
 
     this.handleReport = this.handleReport.bind(this);
@@ -84,11 +67,13 @@ export default class Comment extends PureComponent {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUsernameTap = this.handleUsernameTap.bind(this);
     this.handleLikesTap = this.handleLikesTap.bind(this);
-    this.getStyle = this.getStyle.bind(this)
+    this.getStyle = this.getStyle.bind(this);
   }
 
   getStyle(name) {
-    return this.props.styles && this.props.styles[name] ? this.props.styles[name] : {};
+    return this.props.styles && this.props.styles[name]
+      ? this.props.styles[name]
+      : {};
   }
 
   handleReport() {
@@ -98,9 +83,9 @@ export default class Comment extends PureComponent {
       [
         {
           text: "Yes",
-          onPress: () => this.props.reportAction(this.props.data)
+          onPress: () => this.props.reportAction(this.props.data),
         },
-        { text: "No", onPress: () => null }
+        { text: "No", onPress: () => null },
       ],
       true
     );
@@ -124,9 +109,9 @@ export default class Comment extends PureComponent {
       [
         {
           text: "Yes",
-          onPress: () => this.props.deleteAction(this.props.data)
+          onPress: () => this.props.deleteAction(this.props.data),
         },
-        { text: "No", onPress: () => null }
+        { text: "No", onPress: () => null },
       ],
       true
     );
@@ -134,7 +119,7 @@ export default class Comment extends PureComponent {
   }
   handleUsernameTap() {
     if (this.props.usernameTapAction) {
-      this.props.usernameTapAction(this.props.username);
+      this.props.usernameTapAction(this.props.user_id);
     }
   }
   handleLikesTap() {
@@ -157,7 +142,7 @@ export default class Comment extends PureComponent {
                 style={[
                   styles.image,
                   { width: 30, height: 30, borderRadius: 15 },
-                  this.getStyle("avatar")
+                  this.getStyle("avatar"),
                 ]}
                 source={
                   this.props.image === ""
@@ -167,12 +152,23 @@ export default class Comment extends PureComponent {
               />
               {this.props.likesNr && this.props.likeAction ? (
                 <Pressable
-                  style={[styles.actionButton, { paddingTop: 5 }, this.getStyle("actionButton")]}
+                  style={[
+                    styles.actionButton,
+                    { paddingTop: 5 },
+                    this.getStyle("actionButton"),
+                  ]}
                   onPress={this.handleLikesTap}
                 >
                   <View style={{ flexDirection: "row" }}>
-                    <MaterialCommunityIcons name="thumb-up" color={this.props.likedColor || 'grey'} size={15} />
-                    <Text style={[styles.likeNr, this.getStyle("likeNr")]}> {this.props.likesNr}</Text>
+                    <MaterialCommunityIcons
+                      name="thumb-up"
+                      color={this.props.likedColor || "grey"}
+                      size={15}
+                    />
+                    <Text style={[styles.likeNr, this.getStyle("likeNr")]}>
+                      {" "}
+                      {this.props.likesNr}
+                    </Text>
                   </View>
                 </Pressable>
               ) : null}
@@ -185,7 +181,9 @@ export default class Comment extends PureComponent {
           style={[styles.right, this.getStyle("right")]}
         >
           <View style={[styles.rightContent, this.getStyle("rightContent")]}>
-            <View style={[styles.rightContentTop, this.getStyle("rightContentTop")]}>
+            <View
+              style={[styles.rightContentTop, this.getStyle("rightContentTop")]}
+            >
               <Pressable onPress={this.handleUsernameTap}>
                 <Text style={[styles.name, this.getStyle("username")]}>
                   {this.props.username}
@@ -196,10 +194,10 @@ export default class Comment extends PureComponent {
               {this.props.body}
             </Text>
           </View>
-          <View style={[styles.rightActionBar, this.getStyle("rightActionBar")]}>
-            <Text
-            style={[styles.time, this.getStyle("timeAgoText")]}
-            >
+          <View
+            style={[styles.rightActionBar, this.getStyle("rightActionBar")]}
+          >
+            <Text style={[styles.time, this.getStyle("timeAgoText")]}>
               {timeDifference(new Date(), convertToDate(this.props.updatedAt))}
             </Text>
             {this.props.likeAction ? (
@@ -213,7 +211,11 @@ export default class Comment extends PureComponent {
                       styles.actionText,
                       this.getStyle("actionText"),
                       this.getStyle("likeText"),
-                      { color: this.props.liked ? this.props.likedColor || "#4DB2DF" : this.props.unlikedColor || "#9B9B9B" },
+                      {
+                        color: this.props.liked
+                          ? this.props.likedColor || "#4DB2DF"
+                          : this.props.unlikedColor || "#9B9B9B",
+                      },
                     ]}
                   >
                     Like{" "}
@@ -230,7 +232,7 @@ export default class Comment extends PureComponent {
                   style={[
                     styles.actionText,
                     this.getStyle("actionText"),
-                    this.getStyle("replyText")
+                    this.getStyle("replyText"),
                   ]}
                 >
                   Reply
@@ -251,7 +253,7 @@ export default class Comment extends PureComponent {
                     style={[
                       styles.menuText,
                       this.getStyle("menuText"),
-                      this.getStyle("editText")
+                      this.getStyle("editText"),
                     ]}
                   >
                     Edit
@@ -269,7 +271,7 @@ export default class Comment extends PureComponent {
                         styles.menuText,
                         { fontStyle: "italic", fontSize: 11 },
                         this.getStyle("menuText"),
-                        this.getStyle("reportedText")
+                        this.getStyle("reportedText"),
                       ]}
                     >
                       Reported
@@ -279,7 +281,7 @@ export default class Comment extends PureComponent {
                       style={[
                         styles.menuText,
                         this.getStyle("menuText"),
-                        this.getStyle("reportText")
+                        this.getStyle("reportText"),
                       ]}
                     >
                       Report
@@ -296,7 +298,7 @@ export default class Comment extends PureComponent {
                     style={[
                       styles.menuText,
                       this.getStyle("menuText"),
-                      this.getStyle("deleteText")
+                      this.getStyle("deleteText"),
                     ]}
                   >
                     Delete
@@ -308,7 +310,7 @@ export default class Comment extends PureComponent {
               style={{
                 flex: 0.5,
                 alignItems: "center",
-                justifyContent: "center"
+                justifyContent: "center",
               }}
             >
               <Pressable
@@ -343,7 +345,8 @@ Comment.propTypes = {
   reported: PropTypes.bool,
   updatedAt: PropTypes.string,
   username: PropTypes.string,
+  user_id: PropTypes.string,
   usernameTapAction: PropTypes.func,
   likedColor: PropTypes.string,
-  unlikedColor: PropTypes.string
+  unlikedColor: PropTypes.string,
 };

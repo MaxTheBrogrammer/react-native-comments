@@ -145,9 +145,9 @@ export default class Comments extends PureComponent {
     this.setEditModalVisible(!this.state.editModalVisible);
   }
 
-  handleUsernameTap(username) {
+  handleUsernameTap(user_id) {
     if (this.props.usernameTapAction) {
-      this.props.usernameTapAction(username);
+      this.props.usernameTapAction(user_id);
     }
   }
 
@@ -174,6 +174,7 @@ export default class Comments extends PureComponent {
         id={this.props.keyExtractor(c)}
         usernameTapAction={this.handleUsernameTap}
         username={this.props.usernameExtractor(c)}
+        user_id={this.props.userIdExtractor(c)}
         body={this.props.bodyExtractor(c)}
         likesNr={
           this.props.likesExtractor(c) ? this.props.likesExtractor(c).length : 0
