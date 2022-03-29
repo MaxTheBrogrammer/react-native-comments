@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import ActionSheet from 'react-native-actionsheet';
 
-const EditOptions = ({ setModalVisible, canEdit, reportAction, isOwnComment, reported }) => {
+const EditOptions = ({ setModalVisible, canEdit, reportAction, isOwnComment, reported, handleEdit, handleDelete }) => {
     const actionSheetRef = useRef(null);
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const EditOptions = ({ setModalVisible, canEdit, reportAction, isOwnComment, rep
         cancelButtonIndex={0}
         destructiveButtonIndex={2}
         onPress={buttonIndex => {
-            optionsActions()[buttonIndex]
+            optionsActions()[buttonIndex]()
         }}
     />
 }
