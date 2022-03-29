@@ -591,7 +591,7 @@ export default class Comments extends PureComponent {
           <View style={[this.getStyle("likeModalContainer")]}>
             <View
               style={[{
-                paddingTop: 40,
+                paddingTop: 50,
                 paddingBottom: 15,
                 flexDirection: 'row',
               }, this.getStyle('likeModalContainerHeader')]}>
@@ -604,7 +604,7 @@ export default class Comments extends PureComponent {
                   onPress={() => this.setLikesModalVisible(false)}>
                   <MaterialCommunityIcons
                     name="chevron-left"
-                    size={25}
+                    size={30}
                     color={this.props.submitButtonColor || "gray"}
                   />
                 </Pressable>
@@ -613,7 +613,7 @@ export default class Comments extends PureComponent {
                 <Text
                   style={[{
                     textAlign: 'center',
-                    fontSize: 16,
+                    fontSize: 20,
                     lineHeight: 35
                   }, this.getStyle("likeHeader")]}>
                   Users that liked the Comment
