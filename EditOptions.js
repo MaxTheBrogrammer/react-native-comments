@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import ActionSheet from 'react-native-actionsheet';
 
-const EditOptions = ({ setModalVisible, canEdit, reportAction, isOwnComment, reported, handleEdit, handleDelete }) => {
+const EditOptions = ({ closeMenu, canEdit, reportAction, isOwnComment, reported, handleEdit, handleDelete }) => {
     const actionSheetRef = useRef(null);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const EditOptions = ({ setModalVisible, canEdit, reportAction, isOwnComment, rep
     const optionsActions = () => {
         let optionsArrActions = [];
         optionsArrActions.push(() => { 
-            setModalVisible();
+            closeMenu();
          })
         if (canEdit) {
             optionsArrActions.push(handleEdit)
