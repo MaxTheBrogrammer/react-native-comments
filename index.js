@@ -597,11 +597,11 @@ export default class Comments extends PureComponent {
         >
           <View style={[this.getStyle("likeModalContainer")]}>
             <View
-              style={{
+              style={[{
                 paddingTop: 40,
                 paddingBottom: 15,
                 flexDirection: 'row',
-              }}>
+              }, this.getStyle('likeModalContainerHeader')]}>
               <View style={{ width: 30 }}>
                 <Pressable
                   style={[{
