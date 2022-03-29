@@ -113,7 +113,6 @@ export default class Comments extends PureComponent {
 
     input &&
       input.measure((x, y, width, height, pageX, pageY) => {
-        console.log(pageY);
         input.focus();
         this.props.replyAction(pageY);
       });
@@ -325,8 +324,7 @@ export default class Comments extends PureComponent {
   /**
    * Renders a comment with pagination
    * */
-  renderComment(c, styles, likedColor, unlikedColor) {
-    const item = c.item;
+  renderComment(item, styles, likedColor, unlikedColor) {
     return (
       <View>
         {this.generateComment(item, styles, likedColor, unlikedColor)}
@@ -519,23 +517,18 @@ export default class Comments extends PureComponent {
           </Pressable>
         ) : null}
         {/* Comments */}
-        {this.props.data.length > 0 ? (
-          <FlatList
-            keyboardShouldPersistTaps="always"
-            style={{ backgroundColor: this.props.backgroundColor }}
-            data={this.props.data}
-            extraData={this.props.lastCommentUpdate}
-            initialNumToRender={this.props.initialDisplayCount || 20}
-            keyExtractor={(item) => this.props.keyExtractor(item) + ""}
-            renderItem={(item) => {
-              return this.renderComment(
+        {this.props.data.length > 0 ? (<>
+          {this.props.data.map((item) => {
+            return <React.Fragment key={this.props.keyExtractor(item) + ""}>
+              {this.renderComment(
                 item,
                 this.props.styles,
                 this.props.likedColor,
                 this.props.unlikedColor
-              );
-            }}
-          />
+              )}
+            </React.Fragment>
+          })}
+        </>
         ) : (
           <Text style={[{ textAlign: "center" }, this.getStyle('noCommentsYet')]}>No comments yet</Text>
         )}
