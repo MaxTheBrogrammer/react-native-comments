@@ -7,6 +7,7 @@ import { View, Text, Image, Pressable, Alert } from "react-native";
 import PropTypes from "prop-types";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import styles from "./styles";
+import EditOptions from "./EditOptions";
 
 function timeDifference(current, previous) {
   var msPerMinute = 60 * 1000;
@@ -175,6 +176,7 @@ export default class Comment extends PureComponent {
             </View>
           </Pressable>
         </View>
+        {menuVisible && <EditOptions setModalVisible={this.setModalVisible} canEdit={this.props.canEdit} reportAction={this.props.reportAction} isOwnComment={this.props.isOwnComment} reported={this.props.reported} />}
         <Pressable
           onPress={() => this.setState({ menuVisible: false })}
           onLongPress={() => this.setModalVisible()}
@@ -241,87 +243,6 @@ export default class Comment extends PureComponent {
             ) : null}
           </View>
         </Pressable>
-        {this.state.menuVisible ? (
-          <View style={[styles.menu, this.getStyle("menu")]}>
-            <View style={{ flex: 1.5 }}>
-              {this.props.canEdit ? (
-                <Pressable
-                  style={[styles.menuItem, this.getStyle("menuItem")]}
-                  onPress={this.handleEdit}
-                >
-                  <Text
-                    style={[
-                      styles.menuText,
-                      this.getStyle("menuText"),
-                      this.getStyle("editText"),
-                    ]}
-                  >
-                    Edit
-                  </Text>
-                </Pressable>
-              ) : null}
-              {this.props.reportAction && !this.props.isOwnComment ? (
-                <Pressable
-                  style={[styles.menuItem, this.getStyle("menuItem")]}
-                  onPress={this.handleReport}
-                >
-                  {this.props.reported ? (
-                    <Text
-                      style={[
-                        styles.menuText,
-                        { fontStyle: "italic", fontSize: 11 },
-                        this.getStyle("menuText"),
-                        this.getStyle("reportedText"),
-                      ]}
-                    >
-                      Reported
-                    </Text>
-                  ) : (
-                    <Text
-                      style={[
-                        styles.menuText,
-                        this.getStyle("menuText"),
-                        this.getStyle("reportText"),
-                      ]}
-                    >
-                      Report
-                    </Text>
-                  )}
-                </Pressable>
-              ) : null}
-              {this.props.canEdit ? (
-                <Pressable
-                  style={[styles.menuItem, this.getStyle("menuItem")]}
-                  onPress={this.handleDelete}
-                >
-                  <Text
-                    style={[
-                      styles.menuText,
-                      this.getStyle("menuText"),
-                      this.getStyle("deleteText"),
-                    ]}
-                  >
-                    Delete
-                  </Text>
-                </Pressable>
-              ) : null}
-            </View>
-            <View
-              style={{
-                flex: 0.5,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Pressable
-                style={[styles.menuClose, this.getStyle("menuClose")]}
-                onPress={() => this.setState({ menuVisible: false })}
-              >
-                <Text style={{ color: "silver" }}>X</Text>
-              </Pressable>
-            </View>
-          </View>
-        ) : null}
       </View>
     );
   }
