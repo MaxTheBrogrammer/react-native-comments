@@ -137,13 +137,13 @@ const styles = StyleSheet.create({
   editButtons: {
     flexDirection: "row",
     justifyContent: "space-around",
-    height: 30,
-    width: 30,
+    height: 40,
+    width: 40,
     paddingLeft: 5,
     paddingRight: 5,
     alignItems: "center",
     borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 20,
     margin: 10,
   },
   menu: {

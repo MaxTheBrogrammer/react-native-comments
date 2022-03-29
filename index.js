@@ -536,7 +536,7 @@ export default class Comments extends PureComponent {
             }}
           />
         ) : (
-          <Text style={{ textAlign: "center" }}>No comments yet</Text>
+          <Text style={[{ textAlign: "center" }, this.getStyle('noCommentsYet')]}>No comments yet</Text>
         )}
 
         {this.props.loadingComments ? (
