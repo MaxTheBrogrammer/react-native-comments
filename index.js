@@ -307,7 +307,7 @@ export default class Comments extends PureComponent {
               <Text
                 style={[{
                   color: 'rgb(255,255,255)',
-                  fontSize: textSize || 13,
+                  fontSize: 13,
                   marginLeft: 10,
                   marginRight: 10,
                   textTransform: 'capitalize',
