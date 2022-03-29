@@ -623,7 +623,7 @@ export default class Comments extends PureComponent {
                     fontSize: 16,
                     lineHeight: 35
                   }, this.getStyle("likeHeader")]}>
-                  Users that liked the workout
+                  Users that liked the Comment
                 </Text>
               </View>
               <View style={{ width: 30 }}>
