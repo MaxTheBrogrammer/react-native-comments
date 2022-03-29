@@ -264,6 +264,7 @@ export default class Comments extends PureComponent {
     let like = l.item;
     return (
       <Pressable
+        key={like.user_id + ''}
         onPress={() => {
           this.setLikesModalVisible(false);
         }}
@@ -624,6 +625,39 @@ export default class Comments extends PureComponent {
             <Text style={[styles.likeHeader, this.getStyle("likeHeader")]}>
               Users that liked the comment
             </Text>
+            <View
+              style={{
+                paddingTop: 40,
+                paddingBottom: 15,
+                flexDirection: 'row',
+              }}>
+              <View style={{ width: 30 }}>
+                <Pressable
+                  style={[{
+                    margin: 0,
+                    padding: 5,
+                  }, this.getStyle("likeModalCloseButton")]}
+                  onPress={() => this.setLikesModalVisible(false)}>
+                  <MaterialCommunityIcons
+                    name="chevron-left"
+                    size={25}
+                    color={this.props.submitButtonColor || "gray"}
+                  />
+                </Pressable>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={[{
+                    textAlign: 'center',
+                    fontSize: 16,
+                    lineHeight: 35
+                  }, this.getStyle("likeHeader")]}>
+                  Users that liked the workout
+                </Text>
+              </View>
+              <View style={{ width: 30 }}>
+              </View>
+            </View>
             {this.state.likesModalVisible ? (
               <FlatList
                 initialNumToRender="10"
