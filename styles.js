@@ -105,10 +105,8 @@ const styles = StyleSheet.create({
   },
   likeContainer: {
     padding: 10,
-    width: 200,
-    justifyContent: "space-around",
-    alignItems: "center",
-    flexDirection: "row",
+    borderBottomColor: 'rgba(0,0,0,0.1)',
+    borderBottomWidth: 1
   },
   likeImage: {
     width: 30,
@@ -116,8 +114,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   likename: {
-    fontWeight: "bold",
-    fontSize: 14,
+    marginTop: 5,
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: 'rgba(0,0,0,0.9)',
   },
   editModalContainer: {
     flex: 1,
@@ -137,14 +137,13 @@ const styles = StyleSheet.create({
   editButtons: {
     flexDirection: "row",
     justifyContent: "space-around",
-    height: 40,
-    width: 80,
+    height: 30,
+    width: 30,
     paddingLeft: 5,
     paddingRight: 5,
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "silver",
-    borderRadius: 5,
+    borderRadius: 15,
     margin: 10,
   },
   menu: {
