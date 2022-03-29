@@ -176,7 +176,7 @@ export default class Comment extends PureComponent {
             </View>
           </Pressable>
         </View>
-        {this.state.menuVisible && <EditOptions closeMenu={() => {this.setState({ menuVisible: false })}} canEdit={this.props.canEdit} reportAction={this.props.reportAction} isOwnComment={this.props.isOwnComment} reported={this.props.reported} handleEdit={this.handleEdit} handleDelete={this.handleDelete} />}
+        {this.state.menuVisible && <EditOptions closeMenu={() => {this.setState({ menuVisible: false })}} canEdit={this.props.canEdit} reportAction={this.handleReport} isOwnComment={this.props.isOwnComment} reported={this.props.reported} handleEdit={this.handleEdit} handleDelete={this.handleDelete} />}
         <Pressable
           onPress={() => this.setState({ menuVisible: false })}
           onLongPress={() => this.setModalVisible()}
