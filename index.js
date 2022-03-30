@@ -263,13 +263,13 @@ export default class Comments extends PureComponent {
     let like = l.item;
     return (
       <Pressable
-        key={like.user_id + ''}
+        key={like.user_id + ""}
         onPress={() => {
           this.setLikesModalVisible(false);
         }}
         style={[styles.likeContainer, this.getStyle("likeContainer")]}
       >
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: "row" }}>
           <View style={{ width: 30 }}>
             <Image
               style={[styles.likeImage, this.getStyle("likeImage")]}
@@ -293,9 +293,9 @@ export default class Comments extends PureComponent {
                   paddingBottom: 0,
                   margin: 0,
                   flex: 1,
-                  flexDirection: 'row',
-                  alignContent: 'center',
-                  justifyContent: 'center',
+                  flexDirection: "row",
+                  alignContent: "center",
+                  justifyContent: "center",
                   maxHeight: 25,
                 },
                 this.getStyle("likeProfileButton"),
@@ -303,15 +303,20 @@ export default class Comments extends PureComponent {
               onPress={() => {
                 this.setLikesModalVisible(false);
                 like.tap(like.user_id);
-              }}>
+              }}
+            >
               <Text
-                style={[{
-                  color: 'rgb(255,255,255)',
-                  fontSize: 13,
-                  marginLeft: 10,
-                  marginRight: 10,
-                  textTransform: 'capitalize',
-                }, this.getStyle("likeProfileButtonText")]}>
+                style={[
+                  {
+                    color: "rgb(255,255,255)",
+                    fontSize: 13,
+                    marginLeft: 10,
+                    marginRight: 10,
+                    textTransform: "capitalize",
+                  },
+                  this.getStyle("likeProfileButtonText"),
+                ]}
+              >
                 Profile
               </Text>
             </Pressable>
@@ -330,7 +335,7 @@ export default class Comments extends PureComponent {
         {this.generateComment(item, styles, likedColor, unlikedColor)}
         <View style={{ marginLeft: 40 }}>
           {this.props.childrenCountExtractor(item) &&
-            this.props.childPropName ? (
+          this.props.childPropName ? (
             <Pressable onPress={() => this.toggleExpand(item)}>
               <View
                 style={[styles.repliedSection, this.getStyle("repliedSection")]}
@@ -357,10 +362,10 @@ export default class Comments extends PureComponent {
             collapsed={!this.isExpanded(this.props.keyExtractor(item))}
           >
             {this.props.childrenCountExtractor(item) &&
-              this.props.paginateAction ? (
+            this.props.paginateAction ? (
               <View>
                 {this.props.childPropName &&
-                  this.props.childrenCountExtractor(item) >
+                this.props.childrenCountExtractor(item) >
                   item[this.props.childPropName].length ? (
                   <Pressable
                     onPress={() =>
@@ -392,7 +397,7 @@ export default class Comments extends PureComponent {
 
                 {this.props.childrenCountExtractor(item) >
                   item[this.props.childPropName].length &&
-                  this.props.paginateAction ? (
+                this.props.paginateAction ? (
                   <Pressable
                     onPress={() =>
                       this.paginate(
@@ -425,8 +430,8 @@ export default class Comments extends PureComponent {
             <View style={[styles.inputSection, this.getStyle("inputSection")]}>
               <TextInput
                 ref={(input) =>
-                (this.textInputs["input" + this.props.keyExtractor(item)] =
-                  input)
+                  (this.textInputs["input" + this.props.keyExtractor(item)] =
+                    input)
                 }
                 style={[styles.input, this.getStyle("input")]}
                 multiline={true}
@@ -493,9 +498,9 @@ export default class Comments extends PureComponent {
         </View>
 
         {!this.props.loadingComments &&
-          this.props.data &&
-          this.props.data.length &&
-          this.props.paginateAction ? (
+        this.props.data &&
+        this.props.data.length &&
+        this.props.paginateAction ? (
           <Pressable
             onPress={() => {
               this.paginate(
@@ -517,20 +522,27 @@ export default class Comments extends PureComponent {
           </Pressable>
         ) : null}
         {/* Comments */}
-        {this.props.data.length > 0 ? (<>
-          {this.props.data.map((item) => {
-            return <React.Fragment key={this.props.keyExtractor(item) + ""}>
-              {this.renderComment(
-                item,
-                this.props.styles,
-                this.props.likedColor,
-                this.props.unlikedColor
-              )}
-            </React.Fragment>
-          })}
-        </>
+        {this.props.data.length > 0 ? (
+          <>
+            {this.props.data.map((item) => {
+              return (
+                <React.Fragment key={this.props.keyExtractor(item) + ""}>
+                  {this.renderComment(
+                    item,
+                    this.props.styles,
+                    this.props.likedColor,
+                    this.props.unlikedColor
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </>
         ) : (
-          <Text style={[{ textAlign: "center" }, this.getStyle('noCommentsYet')]}>No comments yet</Text>
+          <Text
+            style={[{ textAlign: "center" }, this.getStyle("noCommentsYet")]}
+          >
+            No comments yet
+          </Text>
         )}
 
         {this.props.loadingComments ? (
@@ -559,9 +571,9 @@ export default class Comments extends PureComponent {
         ) : null}
 
         {!this.props.loadingComments &&
-          this.props.data &&
-          this.props.data.length &&
-          this.props.paginateAction ? (
+        this.props.data &&
+        this.props.data.length &&
+        this.props.paginateAction ? (
           <Pressable
             style={{ height: 70 }}
             onPress={() => {
@@ -590,18 +602,26 @@ export default class Comments extends PureComponent {
         >
           <View style={[this.getStyle("likeModalContainer")]}>
             <View
-              style={[{
-                paddingTop: 50,
-                paddingBottom: 15,
-                flexDirection: 'row',
-              }, this.getStyle('likeModalContainerHeader')]}>
+              style={[
+                {
+                  paddingTop: 50,
+                  paddingBottom: 15,
+                  flexDirection: "row",
+                },
+                this.getStyle("likeModalContainerHeader"),
+              ]}
+            >
               <View style={{ width: 30 }}>
                 <Pressable
-                  style={[{
-                    margin: 0,
-                    padding: 5,
-                  }, this.getStyle("likeModalCloseButton")]}
-                  onPress={() => this.setLikesModalVisible(false)}>
+                  style={[
+                    {
+                      margin: 0,
+                      padding: 5,
+                    },
+                    this.getStyle("likeModalCloseButton"),
+                  ]}
+                  onPress={() => this.setLikesModalVisible(false)}
+                >
                   <MaterialCommunityIcons
                     name="chevron-left"
                     size={30}
@@ -611,16 +631,19 @@ export default class Comments extends PureComponent {
               </View>
               <View style={{ flex: 1 }}>
                 <Text
-                  style={[{
-                    textAlign: 'center',
-                    fontSize: 20,
-                    lineHeight: 35
-                  }, this.getStyle("likeHeader")]}>
+                  style={[
+                    {
+                      textAlign: "center",
+                      fontSize: 20,
+                      lineHeight: 35,
+                    },
+                    this.getStyle("likeHeader"),
+                  ]}
+                >
                   Users that liked the Comment
                 </Text>
               </View>
-              <View style={{ width: 30 }}>
-              </View>
+              <View style={{ width: 30 }}></View>
             </View>
             {this.state.likesModalVisible ? (
               <FlatList
@@ -638,7 +661,7 @@ export default class Comments extends PureComponent {
           onShow={() => {
             this.textInputs["editCommentInput"].focus();
           }}
-          transparent={false}
+          transparent={true}
           visible={this.state.editModalVisible}
           onRequestClose={() => {
             this.setEditModalVisible(false);
@@ -672,7 +695,11 @@ export default class Comments extends PureComponent {
               >
                 <Pressable onPress={() => this.setEditModalVisible(false)}>
                   <View
-                    style={[styles.editButtons, this.getStyle("editButtons"), this.getStyle("editButtonClose")]}
+                    style={[
+                      styles.editButtons,
+                      this.getStyle("editButtons"),
+                      this.getStyle("editButtonClose"),
+                    ]}
                   >
                     {this.renderIcon({
                       name: "close",
@@ -691,7 +718,11 @@ export default class Comments extends PureComponent {
                   }}
                 >
                   <View
-                    style={[styles.editButtons, this.getStyle("editButtons"), this.getStyle("editButtonSave")]}
+                    style={[
+                      styles.editButtons,
+                      this.getStyle("editButtons"),
+                      this.getStyle("editButtonSave"),
+                    ]}
                   >
                     {this.renderIcon({
                       name: "check",
