@@ -638,7 +638,7 @@ export default class Comments extends PureComponent {
           onShow={() => {
             this.textInputs["editCommentInput"].focus();
           }}
-          transparent={true}
+          transparent={false}
           visible={this.state.editModalVisible}
           onRequestClose={() => {
             this.setEditModalVisible(false);
