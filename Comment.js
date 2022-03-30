@@ -78,6 +78,7 @@ export default class Comment extends PureComponent {
   }
 
   handleReport() {
+    this.setState({ menuVisible: false });
     Alert.alert(
       "Confirm report",
       "Are you sure you want to report?",
@@ -90,7 +91,6 @@ export default class Comment extends PureComponent {
       ],
       true
     );
-    this.setState({ menuVisible: false });
   }
   handleReply() {
     this.props.replyAction(this.props.data);
@@ -99,11 +99,12 @@ export default class Comment extends PureComponent {
     this.props.likeAction(this.props.data);
   }
   handleEdit() {
-    this.props.editComment(this.props.data);
     this.setState({ menuVisible: false });
+    this.props.editComment(this.props.data);
   }
 
   handleDelete() {
+    this.setState({ menuVisible: false });
     Alert.alert(
       "Confirm delete",
       "Are you sure you want to delete?",
@@ -116,7 +117,6 @@ export default class Comment extends PureComponent {
       ],
       true
     );
-    this.setState({ menuVisible: false });
   }
   handleUsernameTap() {
     if (this.props.usernameTapAction) {
@@ -176,7 +176,19 @@ export default class Comment extends PureComponent {
             </View>
           </Pressable>
         </View>
-        {this.state.menuVisible && <EditOptions closeMenu={() => {this.setState({ menuVisible: false })}} canEdit={this.props.canEdit} reportAction={this.handleReport} isOwnComment={this.props.isOwnComment} reported={this.props.reported} handleEdit={this.handleEdit} handleDelete={this.handleDelete} />}
+        {this.state.menuVisible && (
+          <EditOptions
+            closeMenu={() => {
+              this.setState({ menuVisible: false });
+            }}
+            canEdit={this.props.canEdit}
+            reportAction={this.handleReport}
+            isOwnComment={this.props.isOwnComment}
+            reported={this.props.reported}
+            handleEdit={this.handleEdit}
+            handleDelete={this.handleDelete}
+          />
+        )}
         <Pressable
           onPress={() => this.setState({ menuVisible: false })}
           onLongPress={() => this.setModalVisible()}
@@ -252,7 +264,6 @@ Comment.propTypes = {
   data: PropTypes.object,
   body: PropTypes.string,
   styles: PropTypes.object,
-  canEdit: PropTypes.bool,
   canEdit: PropTypes.bool,
   child: PropTypes.bool,
   editComment: PropTypes.func,
