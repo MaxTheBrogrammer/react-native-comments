@@ -5,7 +5,7 @@ import React, { PureComponent } from "react";
 import { View, Text, Image, Pressable, Alert } from "react-native";
 
 import PropTypes from "prop-types";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./styles";
 import EditOptions from "./EditOptions";
 

@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import PropTypes from "prop-types";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./styles";
 import Collapsible from "react-native-collapsible";
 import Comment from "./Comment";
